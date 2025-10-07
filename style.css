@@ -1,0 +1,203 @@
+:root {
+/* ### Primary*/
+
+--Green400: hsl(172, 67%, 45%);
+
+/* ### Neutral */
+
+--Green900: hsl(183, 100%, 15%);
+--Green800: hsl(183, 79%, 24%);
+--Grey500: hsl(186, 14%, 43%);
+--Grey400: hsl(184, 14%, 56%);
+--Grey300: hsl(173, 61%, 77%);
+--Grey200: hsl(185, 41%, 84%);
+--Grey50: hsl(189, 47%, 97%);
+--White: hsl(0, 100%, 100%);
+
+--fw700: 700;
+--input: 1.5rem;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h4 {
+    font-size: 1rem;
+}
+
+h5 {
+    font-size: 0.8rem;
+}
+
+.optionsLabel {
+    color: var(--Grey500)
+}
+
+.displayLabel {
+    color: var(--White);
+}
+
+.displaySubLabel {
+    color: var(--Grey500)
+}
+
+body {
+    font-family: "Space Mono", monospace;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--Grey200);   
+}
+
+
+.bodyContainer{
+    justify-items: center;
+    /* background-color: blue; */
+    height: 100%;
+}
+
+.logo {
+    /* background-color: red; */
+    height: 30vh;
+    align-content: flex-end;
+    & img {
+        position: relative;
+        bottom: 20%;
+    }
+}
+
+
+.mainContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: var(--White);
+    padding: 2em;
+    border-radius: 20px;
+    gap: 2em;
+    /* width: 60%; */
+    max-width: 900px;
+    min-width: 720px;
+}
+
+.options {
+    padding: 1em;
+}
+
+input[type=text] {
+        font-size: var(--input);
+        padding: 0.25em 0.5em;
+        font-family: "Space Mono", monospace;
+        font-weight: var(--fw700);
+        color: var(--Green900);
+        border: none;
+        outline-color: var(--Green400);
+        width: 100%;
+    }
+ 
+.input--bill {
+    background-image: url("images/icon-dollar.svg");
+}
+
+.input--people {
+    background-image: url("images/icon-person.svg");
+}
+
+.input--bill, .input--people {
+    text-align: right;
+    background-repeat: no-repeat;
+    background-position: .7em center;
+    background-size: 0.55em;
+    padding-left: 2em;
+}
+
+.input--custom {
+    text-align: center;
+}
+
+.options__bill, .customTip__buttonGridContainer {
+    margin-bottom: 2em;
+}
+
+.customTip__buttonGridContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1em;
+}
+
+/* inactive buttons */
+.button {
+    font-size: var(--input);
+    font-family: "Space Mono", monospace;
+    font-weight: var(--fw700);
+    color: var(--White);
+    background-color: var(--Green900);
+    border: none;
+    border-radius: 5px;
+}
+.button:hover {
+    color: var(--Green900);
+    background-color: var(--Grey300);
+    cursor: pointer;
+}
+
+
+#active {
+
+}
+
+
+.display {
+    padding: 2em;
+    background-color: var(--Green900);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.display__outputGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1.5fr 1fr;
+    grid-template-areas: 
+        'heading output'
+        'subHeading output';
+    /* width: 100%; */
+    /* background-color: red; */
+    margin-bottom: 10px;
+}
+
+.outputHeading {
+    grid-area: heading;
+    /* padding: auto 0 0 0; */
+    /* background-color: blue; */
+    align-self: end;
+}
+.outputSubHeading {
+    grid-area: subHeading;
+}
+.output {
+    grid-area: output;
+    text-align: right;
+    font-size: 3rem;
+    color: var(--Green400);
+}
+
+.resetButton {
+    margin: auto 0 0 0;
+    font-size: var(--input);
+    font-family: "Space Mono", monospace;
+    font-weight: var(--fw700);
+    color: var(--Green900);
+    background-color: var(--Green800);
+    border: none;
+    border-radius: 5px;
+}

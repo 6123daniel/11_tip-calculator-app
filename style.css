@@ -14,6 +14,7 @@
 --Grey50: hsl(189, 47%, 97%);
 --White: hsl(0, 100%, 100%);
 
+--error: hsl(4, 81%, 54%);
 --fw700: 700;
 --input: 1.5rem;
 }
@@ -54,24 +55,21 @@ body {
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background-color: var(--Grey200);   
+    background-color: var(--Grey200);
 }
 
 
 .bodyContainer{
     justify-items: center;
+    align-items: center;
     /* background-color: blue; */
     height: 100%;
 }
 
 .logo {
     /* background-color: red; */
-    height: 30vh;
-    align-content: flex-end;
-    & img {
-        position: relative;
-        bottom: 20%;
-    }
+    height: 25%;
+    align-content: center;
 }
 
 
@@ -89,6 +87,16 @@ body {
 
 .options {
     padding: 1em;
+}
+
+.labelAndError {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.errorMsg {
+    color:var(--error);
 }
 
 input[type=text] {
@@ -149,11 +157,9 @@ input[type=text] {
     cursor: pointer;
 }
 
-
-#active {
-
+.button--none {
+    display: none;
 }
-
 
 .display {
     padding: 2em;
@@ -191,6 +197,7 @@ input[type=text] {
     color: var(--Green400);
 }
 
+/* inactive reset button */
 .resetButton {
     margin: auto 0 0 0;
     font-size: var(--input);
@@ -200,4 +207,20 @@ input[type=text] {
     background-color: var(--Green800);
     border: none;
     border-radius: 5px;
+    height: 2em;
+}
+
+/* active button */
+#active {
+    color: var(--Green900);
+    background-color: var(--Green400);
+}
+
+@media screen and (max-width: 720px) {
+
+    .mainContainer {
+        grid-template-columns: 1fr;
+        width: 100%;
+        min-width: 0;
+    }
 }

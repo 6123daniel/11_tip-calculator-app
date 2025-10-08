@@ -21,41 +21,60 @@
 </head>
 <body>
   <div class="bodyContainer">
+
     <div class="logo">
       <img src="images/logo.svg" alt="Splitter">
     </div>
+
     <main class="mainContainer">
+
       <section class="options">
+
         <div class="options__bill">
-          <h4 class="optionsLabel">Bill</h4>
-          <input type="text" class="input input--bill" placeholder="0"></input>
+          <div class="labelAndError">
+            <h4 class="optionsLabel">Bill</h4>
+            <h4 class="errorMsg billError" id="billError"></h4>
+          </div>
+          <input type="text" class="input input--bill" id="billInput" onkeyup="validate(value, 'billError', 'billInput')" placeholder="0"></input>
         </div>
+
         <div class="options__tip">
           <h4 class="optionsLabel" for="customTip">Select Tip %</h4>
           <div class="customTip__buttonGridContainer">
-            <button class="button button--5" id="inactive">5%</button>
-            <button class="button button--10" id="inactive">10%</button>
-            <button class="button button--15" id="inactive">15%</button>
-            <button class="button button--25" id="inactive">25%</button>
-            <button class="button button--50" id="inactive">50%</button>
-            <input type="text" class="input input--custom" placeholder="Custom"></input>
+            <button class="button button--none" id="none">0%</button>
+            <button class="button button--5" id="inactive" onclick="setTipPercent('button--5', 5)">5%</button>
+            <button class="button button--10" id="inactive" onclick="setTipPercent('button--10', 10)">10%</button>
+            <button class="button button--15" id="inactive" onclick="setTipPercent('button--15', 15)">15%</button>
+            <button class="button button--25" id="inactive" onclick="setTipPercent('button--25', 25)">25%</button>
+            <button class="button button--50" id="inactive" onclick="setTipPercent('button--50', 50)">50%</button>
+            <input type="text" class="input input--custom" onkeyup="setTipPercentCustom('input--custom', value)" placeholder="Custom"></input>
           </div>
-          <h4 class="optionsLabel">Number of People</h4>
-          <input type="text" class="input input--people" placeholder="0"></input>
+
+          <div class="labelAndError">
+            <h4 class="optionsLabel">Number of People</h4>
+            <h4 class="errorMsg peopleError" id="peopleError"></h4>
+          </div>
+          <input type="text" class="input input--people" id="peopleInput" onkeyup="validate(value, 'peopleError', 'peopleInput')" placeholder="0"></input>
         </div>
+
+
       </section>
       <section class="display">
+
         <div class="display__outputGrid">
           <h4 class="outputHeading displayLabel">Tip Amount</h4>
           <h5 class="outputSubHeading displaySubLabel">/ person</h5>
-          <h3 class="output displayTipAmount">$0.00</h3>
+          <h3 class="output displayTipAmount" id="displayTipAmount">$0.00</h3>
         </div>
+
         <div class="display__outputGrid">
           <h4 class="outputHeading displayLabel">Total</h4>
           <h5 class="outputSubHeading displaySubLabel">/ person</h5>
-          <h3 class="output displayTotal">$0.00</h3>
+          <h3 class="output displayTotal" id="displayTotalAmount">$0.00</h3>
         </div>
+
         <button class="resetButton">RESET</button>
+
       </section>
     </main>
     

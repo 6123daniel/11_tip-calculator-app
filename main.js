@@ -38,13 +38,15 @@ function setTipPercent(className, amount) {
     buttonActive.id = "inactive";
     buttonActive = temp[0];
     buttonActive.id = "active";
-    calculateTip(bill, amount, people);
+    tipPercent = amount;
+    calculateTip(bill, tipPercent, people);
 }
 
 // custom tip input
 function setTipPercentCustom(className, amount) {
     buttonActive.id = "inactive";
-    calculateTip(bill, amount, people);
+    tipPercent = amount;
+    calculateTip(bill, tipPercent, people);
 }
 
 function calculateTip(bill, tipPercent, people) {

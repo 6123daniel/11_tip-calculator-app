@@ -1,13 +1,13 @@
-console.log("Hello world!");
 let bill = document.getElementById("billInput");
+let billValue;
 let people = document.getElementById("peopleInput");
+let peopleValue;
 let tipAmountDisplay = document.getElementById("displayTipAmount");
 let totalAmountDisplay = document.getElementById("displayTotalAmount");
+let resetButton = document.getElementById("resetButton");
 let tipPercent = 0;
 let tipAmount;
 let total;
-
-// bill.addEventListener("change", calculateTip());
 
 // validate bill and number of people inputs
 function validate(value, element, ref) {
@@ -20,15 +20,15 @@ function validate(value, element, ref) {
     else {
         clearError(element, ref);
         if (ref === "billInput") {
-            bill = Number(value);
+            billValue = Number(value);
+            console.log("billValue: " + billValue)
         }
         else if (ref === "peopleInput") {
-            people = Number(value);
+            peopleValue = Number(value);
         }
-
     }
-    console.log("bill: " + bill)
-    calculateTip(bill, tipPercent, people);
+    console.log("bill: " + billValue)
+    calculateTip(billValue, tipPercent, peopleValue);
 }
 
 // tip buttons
@@ -39,19 +39,19 @@ function setTipPercent(className, amount) {
     buttonActive = temp[0];
     buttonActive.id = "active";
     tipPercent = amount;
-    calculateTip(bill, tipPercent, people);
+    calculateTip(billValue, tipPercent, peopleValue);
 }
 
 // custom tip input
 function setTipPercentCustom(className, amount) {
     buttonActive.id = "inactive";
     tipPercent = amount;
-    calculateTip(bill, tipPercent, people);
+    calculateTip(billValue, tipPercent, peopleValue);
 }
 
-function calculateTip(bill, tipPercent, people) {
-    tipAmount = validateCalculation(((bill*((100+Number(tipPercent))/100)-bill)/people).toFixed(2));
-    total = validateCalculation(((bill/people)+Number(tipAmount)).toFixed(2));
+function calculateTip(billValue, tipPercent, peopleValue) {
+    tipAmount = validateCalculation(((billValue*((100+Number(tipPercent))/100)-billValue)/peopleValue).toFixed(2));
+    total = validateCalculation(((billValue/peopleValue)+Number(tipAmount)).toFixed(2));
     displayTip(tipAmount, tipAmountDisplay);
     displayTip(total, totalAmountDisplay)
 }
@@ -76,4 +76,19 @@ function showError(message, element, ref) {
 function clearError(element, ref) {
     document.getElementById(element).innerHTML = '';
     document.getElementById(ref).style.outlineColor = 'var(--Green400)';
+}
+
+// change reset button appearance if there are changes
+window.setInterval(function() {
+    console.log(bill.value);
+    if (bill.value != "" || people.value != "" || tipPercent != 0) {
+    resetButton.style.backgroundColor = "var(--Green400)";
+}
+    else {
+       resetButton.style.backgroundColor = "var(--Green800)"; 
+    }
+}, 200)
+
+function reset() {
+    location.reload();
 }
